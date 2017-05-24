@@ -1,0 +1,255 @@
+// Variables
+@import "variables";
+body{
+	background-color: #F8F8F8;
+}
+
+.hidden{
+	display: none;
+}
+
+.height{
+	height: 50px !important;
+}
+.max-width {
+  width: 100% !important;
+}
+.custom-height {
+  height: 163.33px !important;
+}
+.navbar{
+	margin-bottom: 0px;
+}
+
+.no-margin{
+	margin: 0px !important;
+}
+
+.margin-top{
+	margin-top: 2em;
+}
+.margin-top-sm{
+	margin-top: 10px;
+}
+.margin-r{
+	margin-right: 1em;
+}
+
+.center{
+	text-align: center !important;
+}
+
+.mcenter{
+	float: none;
+	margin: 0 auto;
+}
+
+.no-padding{
+	padding: 0px !important;
+}
+
+.padding-cero-left{
+	padding-left: 0px !important;
+}
+.padding-cero-right{
+	padding-right: 0px !important;
+}
+.padding-siete-left{
+	padding-left: 8px !important; 
+}
+.padding-siete-right{
+	padding-right: 8px !important; 
+}
+.panel{
+	margin-bottom: 8px !important;
+}
+
+.panel-body {
+    padding: 8px !important;
+    background-color: #DFF6FF !important;
+}
+table td {
+  padding-bottom: 7px !important;
+}
+
+.custom-table{
+  padding-bottom: 0px !important;
+}
+
+.custom-input{
+	width: 80%;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin: 0 auto !important;
+}
+.custom-input-desc{
+	width: 95%;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin: 0 auto !important;
+}
+
+.custom-textarea{
+	width: 95% !important;
+	margin: 0 auto !important;
+}
+
+label{
+	padding-top: 0px !important;
+	font-size: 12px;
+}
+label .control-label{
+	font-size: 12px !important;
+}
+.custom-label{
+	padding-right: 0px !important;
+	padding-left: 10px !important;
+}
+
+.big-padding{
+	padding: 30px;
+}
+
+.padding-left{
+	padding-left: 10px !important;
+}
+
+.large-padding{
+	padding: 10px;
+}
+
+.blue-grey{
+	background-color: #37474f !important;
+}
+
+.white{
+	background-color: white;
+}
+
+.red-text{
+	color: rgb(200, 50,50);
+}
+
+.white-text{
+	color: white;
+}
+
+.teal-text{
+	color: #009688;
+}
+
+.no-transform{
+	text-transform: none;
+}
+
+.inline-block{
+	display: inline-block;
+}
+
+.absolute{
+	position: absolute;
+}
+
+.table{
+	background-color: white;
+}
+
+.title{
+	font-size: 24px !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.floating{
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	z-index: 100;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.product{
+	width: 800px;
+	max-width: 100%;
+	padding: 1em;
+	position: relative;
+	h1{
+		padding-bottom: 10px;
+		border-bottom: solid 1px;
+	}
+}
+
+.carrito{
+	position: relative;
+}
+
+.pricing{
+	font-size: 17px !important;
+	margin-top: 15px;
+}
+
+.actions{
+	right: 1em;
+	top: 10px;
+}
+
+.close{
+	position: absolute;
+	right: 2em;
+	top: 0.8em;
+
+}
+.btn-close{
+	color: white !important;
+	font-size: 22px;
+}
+
+table .form-group{
+	margin-bottom: 0 !important;
+}
+
+.img{
+	width: 150px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.hidden{
+	display: none;
+}
+
+.float{
+	position: absolute;
+	float: right;
+	top: 1em;
+	right: 0px;
+}
+
+.float-bottom{
+	padding-top: 1em;
+	float: right;
+	bottom: 0px;
+	right: 0px;
+}
+
+.relative{
+	position: relative;
+}
+.diez{
+	width: 10% !important;
+}
+
+.recaudacion{
+	position: absolute;
+	float: right;
+	top: 1em;
+	right: 5em;
+	text-align: right;
+	text-decoration: bold;
+}
+

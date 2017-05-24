@@ -1,0 +1,183 @@
+﻿
+/*=============================================================
+    Authour URL: www.designbootstrap.com
+    
+    http://www.designbootstrap.com/
+
+    License: MIT
+
+    http://opensource.org/licenses/MIT
+
+    100% Free To use For Personal And Commercial Use.
+
+    IN EXCHANGE JUST TELL PEOPLE ABOUT THIS WEBSITE
+   
+========================================================  */
+
+
+/* =============================================================
+   GENERAL STYLES
+ ============================================================ */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 30px;
+}
+
+.set-radius-zero {
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
+.content-wrapper {
+    margin-top: 15px;
+    min-height: 600px;
+    padding-bottom: 60px;
+}
+
+.page-head-line {
+    font-weight: 900;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #F0677C;
+    text-transform: uppercase;
+    color: #F0677C;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.color-primary{
+    color: #C36464;
+}
+/* =============================================================
+   LOGO SECTION STYLES
+ ============================================================ */
+.navbar-brand {
+    width: 150px;
+    padding-top: 0px;
+}
+
+/* MENU LINKS SECTION*/
+
+.menu-section {
+    background-color: #3D3D3D;
+}
+
+#menu-top a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 10px 10px 10px;
+    text-transform: uppercase;
+}
+
+.menu-top-active {
+    background-color: #C36464;
+}
+
+.menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
+    background-color: #F0677C !important;
+}
+
+.menu-section .dropdown-menu > li > a:hover,.menu-section .dropdown-menu > li > a:focus {
+    background-color: #F0677C!important;
+}
+
+.navbar-inverse {
+    background-color: #C36464;
+    border-color: transparent;
+    min-height: 100px;
+}
+
+.navbar-toggle {
+    background-color: #F0677C;
+    border: 1px solid #fff;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+/* =============================================================
+   FOOTER SECTION STYLES
+ ============================================================ */
+footer {
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    background-color: #C36464;
+}
+
+footer a, footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* HOME ANIMATION*/
+
+#box {
+    -webkit-animation: fadeIn 4s; /* Safari 4+ */
+    -moz-animation:    fadeIn 4s; /* Fx 5+ */
+    -o-animation:      fadeIn 4s; /* Opera 12+ */
+    animation:         fadeIn 4s; /* IE 10+, Fx 29+ */
+}
+
+#box-text{
+  opacity: 0;
+  width: 300px;
+  position: relative;
+  -webkit-animation: fadeInText 3s forwards; /* Safari 4+ */
+  -moz-animation:    fadeInText 3s forwards; /* Fx 5+ */
+  -o-animation:      fadeInText 3s forwards; /* Opera 12+ */
+  animation:         fadeInText 3s forwards; /* IE 10+, Fx 29+ */
+  color: #C36464;
+  left: 610px;
+}
+
+@-webkit-keyframes fadeIn{
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeInText{
+    from   {color:black; left:0px; top:0px;}
+    to {color:#C36464; left:610px; top:0px;opacity: 1;}
+}
+@-moz-keyframes fadeInText {
+    from   {color:black; left:0px; top:0px;}
+    to {color:#C36464; left:610px; top:0px;opacity: 1;}
+}
+@-o-keyframes fadeInText {
+    from   {color:black; left:0px; top:0px;}
+    to {color:#C36464; left:610px; top:0px;opacity: 1;}
+}
+@keyframes fadeInText {
+    from   {color:black; left:0px; top:0px;}
+    to {color:#C36464; left:610px; top:0px;opacity: 1;}
+}

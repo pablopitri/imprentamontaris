@@ -18,7 +18,7 @@ class CreacionTablaOrdenPago extends Migration
             $table->integer('orden_id')->unsigned();
             $table->foreign('orden_id')->references('id')->on('ordens');
             $table->integer('pago_id')->unsigned();
-            $table->foreign('pago_id')->references('id')->on('pagos');
+            $table->foreign('pago_id')->references('id')->on('pagos')->onDelete('cascade');
             $table->timestamps();
         });
     }

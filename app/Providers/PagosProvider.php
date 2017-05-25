@@ -16,7 +16,7 @@ class PagosProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function($view){
-            $view->with('recaudacion_dia', Pago::recaudacion_dia());
+            $view->with('recaudacion_dia', Pago::recaudacion_dia(''));
         });
     }
 

@@ -446,7 +446,7 @@
 									<td>{{ Form::text('forma_pago'.$i, $pago->forma_pago, ['class' => 'form-control custom-input', $option => 'true', 'id'=> 'forma-'.$i]) }}</td>
 									<td>{{ Form::text('numero_documento'.$i, $pago->numero_documento, ['class' => 'form-control custom-input solo-numero', $option => 'true']) }}</td>
 									<td>{{ Form::text('banco'.$i, $pago->banco, ['class' => 'form-control custom-input', $option => 'true']) }}</td>
-									<td>{{ Form::date('fecha'.$i, $pago->fecha, ['class' => 'form-control custom-input', $option => 'true']) }}</td>
+									<td>{{ Form::date('fecha'.$i, Carbon\Carbon::parse($pago->fecha)->format('d-m-Y'), ['class' => 'datepicker form-control custom-input', $option => 'true']) }}</td>
 									<td>{{ Form::number('monto'.$i, $pago->monto, ['class' => 'form-control custom-input', $option => 'true', 'id' => 'monto-'.$i]) }}</td>
 									<td style="text-align: center">{{ Form::checkbox('pagado-'.$i, '1', $pago->pivot->pagado, [$d => 'true', 'id' => 'pagado-'.$i]) }}</td>
 								</tr>
@@ -461,7 +461,7 @@
 									<td>{{ Form::text('forma_pago'.$i, '', ['class' => 'form-control custom-input', 'id'=> 'forma-'.$i]) }}</td>
 									<td>{{ Form::text('numero_documento'.$i, '', ['class' => 'form-control custom-input']) }}</td>
 									<td>{{ Form::text('banco'.$i, '', ['class' => 'form-control custom-input']) }}</td>
-									<td>{{ Form::date('fecha'.$i, Carbon\Carbon::now(), ['class' => 'form-control custom-input']) }}</td>
+									<td>{{ Form::date('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
 									<td>{{ Form::number('monto'.$i, '', ['class' => 'form-control custom-input', 'id' => 'monto-'.$i]) }}</td>
 									<td style="text-align: center">{{ Form::checkbox('pagado-'.$i, '1','', ['id' => 'pagado-'.$i]) }}</td>
 								</tr>
@@ -473,7 +473,7 @@
 									<td>{{ Form::text('forma_pago'.$i, '', ['class' => 'form-control custom-input', 'id'=> 'forma-'.$i]) }}</td>
 									<td>{{ Form::text('numero_documento'.$i, '', ['class' => 'form-control custom-input']) }}</td>
 									<td>{{ Form::text('banco'.$i, '', ['class' => 'form-control custom-input']) }}</td>
-									<td>{{ Form::date('fecha'.$i, Carbon\Carbon::now(), ['class' => 'form-control custom-input']) }}</td>
+									<td>{{ Form::date('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
 									<td>{{ Form::number('monto'.$i, '', ['class' => 'form-control custom-input', 'id' => 'monto-'.$i]) }}</td>
 									<td style="text-align: center">{{ Form::checkbox('pagado-'.$i, '1','', ['id' => 'pagado-'.$i]) }}</td>
 								</tr>

@@ -192,7 +192,10 @@
 							@endphp
 								<tr>
 									<td>
-										<p>{{ $i }}</p>
+										<div class="cancel" id="{{ 'cancel-'.$i }}">
+											<p class="no-margin" id="{{ 'cancel-'.$i }}">{{ $i }}</p>
+											<span class="glyphicon glyphicon-remove hidden" id="{{ 'cancel-'.$i }}" aria-hidden="true" style="color: red;"></span>
+										</div>
 									</td>
 									<td>
 										<div class="form-group">

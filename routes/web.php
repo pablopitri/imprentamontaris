@@ -19,6 +19,8 @@ Route::resource('cotizaciones', 'CotizacionesController');
 
 Route::resource('ordenes', 'OrdenesController');
 
+Route::resource('pagos', 'PagosController', ['only' => ['index', 'show']]);
+
 Route::get('/ordenes/new/{id}', 'OrdenesController@new');
 
 Route::get('/cotizaciones/find/{id?}', 'ProductosController@find');
@@ -30,6 +32,8 @@ Route::get('/contactos/search/{id?}/{razon?}/{nombre?}/{ciudad?}/{fantaia?}/{gir
 Route::get('/cotizaciones/search/{id}/{fecha_inicio}/{fecha_final}/{rut}/{razon_social}/{pendientes}/{cod_prod}/{nom_prod}', 'CotizacionesController@search');
 
 Route::get('/ordenes/search/{id?}/{fecha_inicio?}/{fecha_final?}/{rut?}/{razon_social?}/{pendientes?}/{cod_prod?}/{nom_prod?}', 'OrdenesController@search');
+
+Route::get('/pagos/search/{fecha_inicio?}/{fecha_final?}', 'PagosController@search');
 
 Route::get('/cotizaciones/pdf/{id?}', 'PdfController@pdfCotizacion');
 

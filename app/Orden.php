@@ -52,7 +52,7 @@ class Orden extends Model
     }
 
     public function pagos(){
-    	return $this->belongsToMany('App\Pago')->withPivot('pagado');
+    	return $this->belongsToMany('App\Pago')->withPivot('pagado', 'created_at');
     }
 
     public function contacto(){
@@ -115,6 +115,15 @@ class Orden extends Model
         if ($nom_prod != 'null') {
             $query->whereHas('productos', function($q) use ($nom_prod) {
                 $q->where('productos.descripcion', 'LIKE', '%'.$nom_prod.'%');
+            });
+        }
+    }
+
+    public function scopeFecha($query, $fecha){
+        if ($fecha != null) {
+            $query->whereHas('pagos', function($q) use ($fecha){
+                $q->where('pagos.fecha', $fecha)
+                  ->where('orden_pago.pagado', 1);
             });
         }
     }

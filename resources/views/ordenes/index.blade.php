@@ -110,9 +110,9 @@
 										<td>{{ date('d-m-Y', strtotime($orden->fecha_ingreso)) }}</td>
 										<td>{{ $orden->contacto->razon_social }}</td>
 										<td>{{ $orden->contacto->rut }}</td>
-										<td>{{ $orden->neto }}</td>
-										<td>{{ $orden->iva }}</td>
-										<td>{{ $orden->total }}</td>
+										<td>$ {{ number_format($orden->neto, 0, '', '.') }}</td>
+										<td>$ {{ number_format($orden->neto, 0, '', '.') }}</td>
+										<td>$ {{ number_format($orden->neto, 0, '', '.') }}</td>
 										<td style="width: 100px">
 											<table>
 												<tr>

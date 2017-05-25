@@ -99,9 +99,9 @@
 										<td>{{ date('d/m/Y', strtotime($cotizacion->created_at)) }}</td>
 										<td>{{ $cotizacion->contacto->razon_social }}</td>
 										<td>{{ $cotizacion->contacto->rut }}</td>
-										<td>{{ $cotizacion->neto }}</td>
-										<td>{{ $cotizacion->iva }}</td>
-										<td>{{ $cotizacion->total }}</td>
+										<td>$ {{ number_format($cotizacion->neto, 0, '', '.') }}</td>
+										<td>$ {{ number_format($cotizacion->iva, 0, '', '.') }}</td>
+										<td>$ {{ number_format($cotizacion->total, 0, '', '.') }}</td>
 										<td style="width: 100px">
 											<table>
 												<tr>

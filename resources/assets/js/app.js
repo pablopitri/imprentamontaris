@@ -348,6 +348,8 @@ function search(url, n, mod){
 				$('#resultado').html(template_contacto(data));
 			else if(n === 2)
 				$('#resultado').html(template(data, mod));
+			else if(n === 3)
+				$('#resultado').html(template_pagos(data, mod));
 		}else{
 			$('#resultado').html(template_error);
 		}
@@ -362,7 +364,6 @@ $('#buscar-contacto').click(function(e){
 	var ciudad = $("#search-ciudad").val();
 	var fantasia = $("#search-nombre_fantasia").val();
 	var giro = $("#search-giro").val();
-	alert(pendientes)
 	rut = (rut) ? rut : 'null';
 	razon_social = (razon_social) ? razon_social : 'null';
 	nombre_contacto = (nombre_contacto) ? nombre_contacto : 'null';
@@ -528,3 +529,55 @@ function each_data(dates, mod){
 	});
 	return template;
 }
+
+//BUSCAR PAGO
+$('#buscar-pagos').click(function(e){
+	e.preventDefault();
+	var fecha_i = ($("#search-fecha_inicio").val()).split('-');
+	var fecha_inicio = (fecha_i.length === 3) ? fecha_i[2] + '-' + fecha_i[1] + '-' + fecha_i[0] : 'null';
+	var fecha_f = ($("#search-fecha_final").val()).split('-');
+	var fecha_final = (fecha_f.length === 3) ? fecha_f[2] + '-' + fecha_f[1] + '-' + fecha_f[0] : 'null';
+	if(fecha_inicio != 'null' || fecha_final != 'null' )
+	{  
+		var url = "/ImprentaMontaris/public/pagos/search/"+ fecha_inicio +"/"+ fecha_final;
+		search(url, 3, 0);
+		$("#back").removeClass('hidden');
+		$("#paginacion").addClass('hidden');
+	}
+});
+
+function template_pagos(data){
+	return `<div class="col-md-12">
+	<table class="table table-bordered table-hover center">
+		<thead>
+			<tr>
+				<th class="center">N°</th>
+				<th class="center">FECHA</th>
+				<th class="center">RECAUDACIÓN</th>
+			</tr>
+		</thead>
+		<tbody>
+			${ each_data_pagos(data) }
+		</tbody>
+	</table>
+	</div>
+	`;
+};
+
+function each_data_pagos(pagos){
+	var template = '';
+	var i = 1;
+	pagos.map(function(pago){
+		var date = new Date(pago.fecha);
+		var dia = (date.getDate() < 10) ? 0 : '';
+		var mes = ((date.getMonth() + 1) < 10) ? 0 : '';
+		template+=`
+		<tr>
+			<td><a href="/ImprentaMontaris/public/pagos/${date.getFullYear()}-${mes}${(date.getMonth() + 1)}-${dia}${date.getDate()}">${i++}</a></td>
+			<td>${dia}${date.getDate()}-${mes}${(date.getMonth() + 1)}-${date.getFullYear()}</td>
+			<td><strong>$ ${pago.sum}</strong></td>
+		</tr>`;
+	});
+	return template;
+}
+

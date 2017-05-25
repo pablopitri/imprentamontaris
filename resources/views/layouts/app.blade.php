@@ -53,6 +53,7 @@
                             <li ><a {{{ (Request::is('contactos*') ? 'class=menu-top-active' : '') }}} href="{{ url('/contactos') }}" id="li-contacto">CONTACTOS</a></li>
                             <li><a {{{ (Request::is('cotizaciones*') ? 'class=menu-top-active' : '') }}} href="{{ url('/cotizaciones') }}" id="li-cotizacion">COTIZACIONES</a></li>
                             <li><a {{{ (Request::is('ordenes*') ? 'class=menu-top-active' : '') }}} href="{{ url('/ordenes') }}" id="li-orden">ORDENES DE TRABAJO</a></li>
+                            <li><a {{{ (Request::is('pagos*') ? 'class=menu-top-active' : '') }}} href="{{ url('/pagos') }}" id="li-orden">PAGOS</a></li>
                         </ul>
                     </div>
                 </div>

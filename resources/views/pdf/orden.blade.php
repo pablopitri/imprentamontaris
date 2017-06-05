@@ -310,27 +310,35 @@
 		<table class="border-radius margin-top ">
 			<tr>
 				<th class="center">CAMBIO</th>
+				{{-- <th></th> --}}
 				<th style="width: 10%;">PRE.</th>
 				<th class="center">CAMBIO</th>
+				{{-- <th></th> --}}
 				<th style="width: 10%;">PRE.</th>
 			</tr>
 			<tr>
 				<td>ORIGINAL</td>
-				<td>{{ Form::checkbox('pre1', '1', $pre[0] ) }}</td>
+				{{-- <td><strong>{{ isset($pre[1]) ? $pre[1] : '' }}</strong></td> --}}
+				<td class="center">{{ Form::checkbox('pre1', '1', isset($pre[1]) ? 1 : 0 ) }}</td>
 				<td>CUADRUPLICADO</td>
-				<td>{{ Form::checkbox('pre4', '4', $pre[3] ) }}</td>
+				{{-- <td><strong>{{ isset($pre[4]) ? $pre[4] : '' }}</strong></td> --}}
+				<td class="center">{{ Form::checkbox('pre4', '4', isset($pre[4]) ? 1 : 0 ) }}</td>
 			</tr>
 			<tr>
 				<td>DUPLICADO</td>
-				<td>{{ Form::checkbox('pre2', '2', $pre[1] ) }}</td>
+				{{-- <td><strong>{{ isset($pre[2]) ? $pre[2] : '' }}</strong></td> --}}
+				<td class="center">{{ Form::checkbox('pre2', '2', isset($pre[2]) ? 1 : 0 ) }}</td>
 				<td>QUINTUPLICADO</td>
-				<td>{{ Form::checkbox('pre5', '5', $pre[4] ) }}</td>
+				{{-- <td><strong>{{ isset($pre[5]) ? $pre[5] : '' }}</strong></td> --}}
+				<td class="center">{{ Form::checkbox('pre5', '5', isset($pre[5]) ? 1 : 0 ) }}</td>
 			</tr>
 			<tr>
 				<td>TRIPLICADO</td>
-				<td>{{ Form::checkbox('pre3', '3', $pre[2] ) }}</td>
+				{{-- <td><strong>{{ isset($pre[3]) ? $pre[3] : '' }}</strong></td> --}}
+				<td class="center">{{ Form::checkbox('pre3', '3', isset($pre[3]) ? 1 : 0 ) }}</td>
 				<td>SEXTUPLICADO</td>
-				<td>{{ Form::checkbox('pre6', '6', $pre[5] ) }}</td>
+				{{-- <td><strong>{{ isset($pre[6]) ? $pre[6] : '' }}</strong></td> --}}
+				<td class="center">{{ Form::checkbox('pre6', '6', isset($pre[6]) ? 1 : 0 ) }}</td>
 			</tr>
 		</table>
 

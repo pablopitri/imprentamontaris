@@ -12,6 +12,7 @@ use App\Producto;
 use App\Vendedor;
 use App\Pago;
 use App\Cotizacion;
+use App\Copia;
 
 class OrdenesController extends Controller
 {
@@ -135,15 +136,21 @@ class OrdenesController extends Controller
         $orden->id_chile_compra = $request->id_chile_compra;
         $orden->oc = $request->oc;
         $orden->tamaño = $request->tamaño;
-        $pre1 = $request->pre1;
-        $pre2 = $request->pre2;
-        $pre3 = $request->pre3;
-        $pre4 = $request->pre4;
-        $pre5 = $request->pre5;
-        $pre6 = $request->pre6;
-        $orden->cambios = $pre1.','.$pre2.','.$pre3.','.$pre4.','.$pre5.','.$pre6;
         
         if($orden->save()){
+            for ($i=1; $i <= 6; $i++) { 
+                if ($request->input('pre'.$i)) {
+                    $copia = Copia::where(['copia' => $i], ['descripcion' => $request->input('desc-'.$i)])->first();
+                    if (count($copia) < 1) {
+                        $copia = new Copia;
+                        $copia->copia = $i;
+                        $copia->descripcion = $request->input('desc-'.$i);
+                        $copia->save();
+                    }
+                    $copia->ordenes()->attach($orden->id);
+                }
+            }
+
             $n_productos = $request->filas;
             for ($i=1; $i <= $n_productos; $i++) {
                 $codigo = $request->input("codigo-".$i);
@@ -174,7 +181,7 @@ class OrdenesController extends Controller
                 $pago->monto = $request->input("monto".$i);
                 $pagado = ($request->input("pagado-".$i)) ? '1' : '0';
 
-                if($pago->forma_pago != null &&  $pago->monto != null){
+                if($pago->monto != null){
                     if($pago->save())
                     {
 
@@ -199,6 +206,7 @@ class OrdenesController extends Controller
     public function show($id)
     {
         $orden = Orden::find($id);
+        $pre = array();
         if(!$orden->contacto){
             $orden->contacto = new Contacto;
         }
@@ -208,7 +216,9 @@ class OrdenesController extends Controller
             if($pago->pivot->pagado)
                 $pagado += $pago->monto;
         }
-        $pre = explode(',', $orden->cambios);
+        foreach ($orden->copias as $copia) {
+            $pre[$copia->copia] = $copia->descripcion;
+        }
         $pendiente = $total - $pagado;
         $filas = count($orden->productos);
         return view('ordenes.show', ["orden" => $orden, 'filas' => $filas, 'pagado' => $pagado, 'pendiente' => $pendiente, 'pre' => $pre]);
@@ -223,6 +233,7 @@ class OrdenesController extends Controller
     public function edit($id)
     {
         $orden = Orden::find($id);
+        $pre = array();
         if(!$orden->contacto){
             $orden->contacto = new Contacto;
         }
@@ -232,7 +243,9 @@ class OrdenesController extends Controller
             if($pago->pivot->pagado)
                 $pagado += $pago->monto;
         }
-        $pre = explode(',', $orden->cambios);
+        foreach ($orden->copias as $copia) {
+            $pre[$copia->copia] = $copia->descripcion;
+        }
         $pendiente = $total - $pagado;
         $filas = count($orden->productos);
         return view('ordenes.edit', ["orden" => $orden, 'filas' => $filas, 'pagado' => $pagado, 'pendiente' => $pendiente, 'pre' => $pre]);
@@ -317,7 +330,27 @@ class OrdenesController extends Controller
         
         if($orden->save()){
             $orden->productos()->detach();
+            $ids = array();
+            foreach ($orden->pagos as $pago) {
+                $ids[] = $pago->id;
+            }
             $orden->pagos()->detach();
+            $orden->copias()->detach();
+            Pago::whereIn('id',$ids)->delete();
+
+            for ($i=1; $i <= 6; $i++) { 
+                if ($request->input('pre'.$i)) {
+                    $copia = Copia::where(['copia' => $i], ['descripcion' => $request->input('desc-'.$i)])->first();
+                    if (count($copia) < 1) {
+                        $copia = new Copia;
+                        $copia->copia = $i;
+                        $copia->descripcion = $request->input('desc-'.$i);
+                        $copia->save();
+                    }
+                    $copia->ordenes()->attach($orden->id);
+                }
+            }
+
             $n_productos = $request->filas;
             for ($i=1; $i <= $n_productos; $i++) {
                 $codigo = $request->input("codigo-".$i);
@@ -347,7 +380,7 @@ class OrdenesController extends Controller
                 $pago->fecha = $fecha;
                 $pago->monto = $request->input("monto".$i);
                 $pagado = ($request->input("pagado-".$i)) ? '1' : '0';
-                if($pago->forma_pago != null &&  $pago->monto != null)
+                if($pago->monto != null)
                 {
                     if($pago->save())
                     {
@@ -374,6 +407,7 @@ class OrdenesController extends Controller
         $orden = Orden::find($id);
         $orden->productos()->detach();
         $orden->pagos()->detach();
+        $orden->copias()->detach();
         if($orden->delete())
         {
             return redirect('/ordenes');

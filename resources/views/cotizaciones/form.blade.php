@@ -106,7 +106,7 @@
 						</a>
 					</td>
 					<td>
-						<button type="submit" class="btn btn-success btn-lg">
+						<button type="submit" id="guardar" class="btn btn-success btn-lg">
 							<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
 							GUARDAR
 						</button>

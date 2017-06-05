@@ -1,4 +1,4 @@
-{!! Form::open(['url' => $url, 'method' => $method, 'class' => 'form-horizontal' ]) !!}
+{!! Form::open(['url' => $url, 'method' => $method, 'class' => 'form-horizontal', 'id' => 'cotizacion' ]) !!}
 	
 	<div class="row">
 		<div class="col-xs-2">

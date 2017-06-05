@@ -61,9 +61,9 @@
 						</tr>
 						<tr>
 							<td><label for="fecha_ingreso">INGRESO</label></td>
-							<td>{{ Form::date('fecha_ingreso', Carbon\Carbon::parse($orden->fecha_ingreso)->format('d-m-Y'), ['class' => 'form-control datepicker', 'option' => 'true']) }}</td>
+							<td>{{ Form::text('fecha_ingreso', Carbon\Carbon::parse($orden->fecha_ingreso)->format('d-m-Y'), ['class' => 'form-control datepicker', 'option' => 'true']) }}</td>
 							<td><label for="fecha_entrega" class="padding-left">ENTREGA</label></td>
-							<td>{{ Form::date('fecha_entrega', Carbon\Carbon::parse($orden->fecha_entrega)->format('d-m-Y'), ['class' => 'form-control datepicker', 'option' => 'true']) }}</td>
+							<td>{{ Form::text('fecha_entrega', Carbon\Carbon::parse($orden->fecha_entrega)->format('d-m-Y'), ['class' => 'form-control datepicker', 'option' => 'true']) }}</td>
 						</tr>
 						<tr>
 							<td><label for="rut">RUT</label></td>
@@ -289,27 +289,35 @@
 									<table class="max-width">
 										<tr>
 											<th>CAMBIOS</th>
-											<th style="width: 10%;">PRE</th>
+											<th></th>
+											<th style="width: 10%;" class="center">PRE</th>
+											<th></th>
 											<th>CAMBIOS</th>
-											<th style="width: 10%;">PRE</th>
+											<th style="width: 10%;" class="center">PRE</th>
 										</tr>
 										<tr>
 											<td>ORIGINAL</td>
-											<td>{{ Form::checkbox('pre1', '1', false) }}</td>
+											<td>{{ Form::text('desc-1', '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre1', '1', false) }}</td>
 											<td>CUADRUPLICADO</td>
-											<td>{{ Form::checkbox('pre4', '4', false) }}</td>
+											<td>{{ Form::text('desc-4', '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre4', '4', false) }}</td>
 										</tr>
 										<tr>
 											<td>DUPLICADO</td>
-											<td>{{ Form::checkbox('pre2', '2', false) }}</td>
+											<td>{{ Form::text('desc-2', '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre2', '2', false) }}</td>
 											<td>QUINTUPLICADO</td>
-											<td>{{ Form::checkbox('pre5', '5', false) }}</td>
+											<td>{{ Form::text('desc-5', '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre5', '5', false) }}</td>
 										</tr>
 										<tr>
 											<td>TRIPLICADO</td>
-											<td>{{ Form::checkbox('pre3', '3', false) }}</td>
+											<td>{{ Form::text('desc-3', '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre3', '3', false) }}</td>
 											<td>SEXTUPLICADO</td>
-											<td>{{ Form::checkbox('pre6', '6', false) }}</td>
+											<td>{{ Form::text('desc-6', '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre6', '6', false) }}</td>
 										</tr>
 									</table>
 								</div>
@@ -392,7 +400,7 @@
 								<td>{{ Form::text('forma_pago'.$i, $orden->pago->forma_pago, ['class' => 'form-control custom-input', 'id'=> 'forma-'.$i]) }}</td>
 								<td>{{ Form::text('numero_documento'.$i, $orden->pago->numero_documento, ['class' => 'form-control custom-input  solo-numero']) }}</td>
 								<td>{{ Form::text('banco'.$i, $orden->pago->banco, ['class' => 'form-control custom-input']) }}</td>
-								<td>{{ Form::date('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
+								<td>{{ Form::text('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
 								<td>{{ Form::number('monto'.$i, $orden->pago->monto, ['class' => 'form-control custom-input solo-numero', 'id' => 'monto-'.$i]) }}</td>
 								<td style="text-align: center">{{ Form::checkbox('pagado-'.$i, '1','', ['id' => 'pagado-'.$i]) }}</td>
 							</tr>

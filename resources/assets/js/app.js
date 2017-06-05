@@ -28,6 +28,12 @@ const app = new Vue({
 // validará cuando el texto haya cambiado
 // muestra un mensaje de error cuando el rut es inválido
 
+$('#guardar').click(function(ev){
+	ev.preventDefault();
+	$('#cotizacion').submit();
+	window.open('http://localhost/ImprentaMontaris/public/cotizaciones/pdf/5');
+})
+
 $("#search-rut").rut({formatOn: 'keyup'});
 
 $("#rut").rut({formatOn: 'keyup'}).on('rutInvalido', function(e) {
@@ -403,6 +409,7 @@ function template_contacto(data){
 };
 
 function each_data_contacto(dates){
+	var token = $('meta[name="csrf-token"]').attr('content');
 	var template = '';
 	dates.map(function(data){
 		template+=`<tr><td><a href="/ImprentaMontaris/public/contactos/${data.id}">${data.rut}</a></td>
@@ -422,7 +429,8 @@ function each_data_contacto(dates){
 		</a>
 		</td>
 		<td>
-		<form method="POST" action="http://localhost/ImprentaMontaris/public/contactos/${data.id}" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="FwxMNiRfZ854tle1Mq3cDoRm3RWP2rU4yZtTwSZb">
+		<form method="POST" action="http://localhost/ImprentaMontaris/public/contactos/${data.id}" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE">
+		<input name="_token" type="hidden" value="${token}">
 		<button type="submit" class="btn btn-sm btn-danger">
 		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 		ELIMINAR

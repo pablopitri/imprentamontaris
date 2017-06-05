@@ -159,7 +159,7 @@
 				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
 				REGRESAR
 			</a>
-			<button type="submit" class="btn btn-success btn-lg">
+			<button type="submit" class="btn btn-success btn-lg" id="guardar">
 				<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
 				GUARDAR
 			</button>

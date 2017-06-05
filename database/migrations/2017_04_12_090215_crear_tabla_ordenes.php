@@ -22,7 +22,6 @@ class CrearTablaOrdenes extends Migration
             $table->string('color')->nullable();
             $table->string('tamaño')->nullable();
             $table->string('observacion')->nullable();
-            $table->string('cambios',20)->nullable();
             $table->integer('total');
             $table->date('fecha_ingreso');
             $table->date('fecha_entrega');

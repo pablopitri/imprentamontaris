@@ -10,6 +10,8 @@ use App\Cotizacion;
 use App\Contacto;
 use App\Producto;
 
+use PDF;
+
 class CotizacionesController extends Controller
 {
     /**
@@ -95,6 +97,8 @@ class CotizacionesController extends Controller
                     }
                 }
             }
+            $pdf = PDF::loadView('pdf.cotizacion', ['cotizacion' => $cotizacion]);
+            $pdf->save("//Lenovo-pc/cotizaciones/Cotizacion-Num-".$cotizacion->id.".pdf");
             return redirect('/cotizaciones/'.$cotizacion->id);
         }else{
             return view('cotizaciones.create', ["cotizacion" => $cotizacion]);
@@ -190,6 +194,8 @@ class CotizacionesController extends Controller
                         }
                     }
                 }
+                $pdf = PDF::loadView('pdf.cotizacion', ['cotizacion' => $cotizacion]);
+                $pdf->save("//Lenovo-pc/cotizaciones/Cotizacion-Num-".$cotizacion->id.".pdf");
                 return redirect('/cotizaciones/'.$cotizacion->id);
             }else{
                 return view('cotizaciones.create', ["contacto" => $contacto]);

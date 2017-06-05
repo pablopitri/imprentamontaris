@@ -11058,6 +11058,12 @@ const app = new Vue({
 // validará cuando el texto haya cambiado
 // muestra un mensaje de error cuando el rut es inválido
 
+$('#guardar').click(function (ev) {
+	ev.preventDefault();
+	$('#cotizacion').submit();
+	window.open('http://localhost/ImprentaMontaris/public/cotizaciones/pdf/5');
+});
+
 $("#search-rut").rut({ formatOn: 'keyup' });
 
 $("#rut").rut({ formatOn: 'keyup' }).on('rutInvalido', function (e) {
@@ -11358,9 +11364,10 @@ function template_contacto(data) {
 };
 
 function each_data_contacto(dates) {
+	var token = $('meta[name="csrf-token"]').attr('content');
 	var template = '';
 	dates.map(function (data) {
-		template += '<tr><td><a href="/ImprentaMontaris/public/contactos/' + data.id + '">' + data.rut + '</a></td>\n\t\t<td>' + (data.razon_social ? data.razon_social : '') + '</td>\n\t\t<td>' + (data.nombre_fantasia ? data.nombre_fantasia : '') + '</td>\n\t\t<td>' + (data.nombre_contacto ? data.nombre_contacto : '') + '</td>\n\t\t<td>' + (data.giro ? data.giro : '') + '</td>\n\t\t<td>' + (data.ciudad ? data.ciudad : '') + '</td>\n\t\t<td>' + (data.fono_contacto ? data.fono_contacto : '') + '</td>\n\t\t<td style="width: 100px">\n\t\t<table>\n\t\t<tr>\n\t\t<td>\n\t\t<a href="http://localhost/ImprentaMontaris/public/contactos/' + data.id + '/edit" class="btn btn-sm btn-warning margin-r">\n\t\t<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>\n\t\tEditar\n\t\t</a>\n\t\t</td>\n\t\t<td>\n\t\t<form method="POST" action="http://localhost/ImprentaMontaris/public/contactos/' + data.id + '" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="FwxMNiRfZ854tle1Mq3cDoRm3RWP2rU4yZtTwSZb">\n\t\t<button type="submit" class="btn btn-sm btn-danger">\n\t\t<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>\n\t\tELIMINAR\n\t\t</button>\n\t\t</form>\n\t\t</td>\n\t\t</tr>\n\t\t</table>\n\t\t</td></tr>';
+		template += '<tr><td><a href="/ImprentaMontaris/public/contactos/' + data.id + '">' + data.rut + '</a></td>\n\t\t<td>' + (data.razon_social ? data.razon_social : '') + '</td>\n\t\t<td>' + (data.nombre_fantasia ? data.nombre_fantasia : '') + '</td>\n\t\t<td>' + (data.nombre_contacto ? data.nombre_contacto : '') + '</td>\n\t\t<td>' + (data.giro ? data.giro : '') + '</td>\n\t\t<td>' + (data.ciudad ? data.ciudad : '') + '</td>\n\t\t<td>' + (data.fono_contacto ? data.fono_contacto : '') + '</td>\n\t\t<td style="width: 100px">\n\t\t<table>\n\t\t<tr>\n\t\t<td>\n\t\t<a href="http://localhost/ImprentaMontaris/public/contactos/' + data.id + '/edit" class="btn btn-sm btn-warning margin-r">\n\t\t<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>\n\t\tEditar\n\t\t</a>\n\t\t</td>\n\t\t<td>\n\t\t<form method="POST" action="http://localhost/ImprentaMontaris/public/contactos/' + data.id + '" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE">\n\t\t<input name="_token" type="hidden" value="' + token + '">\n\t\t<button type="submit" class="btn btn-sm btn-danger">\n\t\t<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>\n\t\tELIMINAR\n\t\t</button>\n\t\t</form>\n\t\t</td>\n\t\t</tr>\n\t\t</table>\n\t\t</td></tr>';
 	});
 	return template;
 }

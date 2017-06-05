@@ -61,9 +61,9 @@
 						</tr>
 						<tr>
 							<td><label for="fecha_ingreso">INGRESO</label></td>
-							<td>{{ Form::date('fecha_ingreso', Carbon\Carbon::parse($orden->fecha_ingreso)->format('d-m-Y'), ['class' => 'form-control datepicker', $option => 'true']) }}</td>
+							<td>{{ Form::text('fecha_ingreso', Carbon\Carbon::parse($orden->fecha_ingreso)->format('d-m-Y'), ['class' => 'form-control datepicker', $option => 'true']) }}</td>
 							<td><label for="fecha_entrega" class="padding-left">ENTREGA</label></td>
-							<td>{{ Form::date('fecha_entrega', Carbon\Carbon::parse($orden->fecha_entrega)->format('d-m-Y'), ['class' => 'form-control datepicker', $option => 'true']) }}</td>
+							<td>{{ Form::text('fecha_entrega', Carbon\Carbon::parse($orden->fecha_entrega)->format('d-m-Y'), ['class' => 'form-control datepicker', $option => 'true']) }}</td>
 						</tr>
 						<tr>
 							<td><label for="rut">RUT</label></td>
@@ -339,27 +339,35 @@
 									<table class="max-width">
 										<tr>
 											<th>CAMBIOS</th>
-											<th style="width: 10%;">PRE</th>
+											<th style="width: 25%"></th>
+											<th style="width: 10%;" class="center">PRE</th>
 											<th>CAMBIOS</th>
-											<th style="width: 10%;">PRE</th>
+											<th style="width: 25%"></th>
+											<th style="width: 10%;" class="center">PRE</th>
 										</tr>
 										<tr>
 											<td>ORIGINAL</td>
-											<td>{{ Form::checkbox('pre1', '1', $pre[0], [$d => 'true'] ) }}</td>
+											<td>{{ Form::text('desc-1', isset($pre[1]) ? $pre[1] : '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre1', '1', isset($pre[1]) ? 1 : 0 , [$d => 'true'] ) }}</td>
 											<td>CUADRUPLICADO</td>
-											<td>{{ Form::checkbox('pre4', '4', $pre[3], [$d => 'true'] ) }}</td>
+											<td>{{ Form::text('desc-4', isset($pre[4]) ? $pre[4] : '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre4', '4', isset($pre[4]) ? 1 : 0 , [$d => 'true'] ) }}</td>
 										</tr>
 										<tr>
 											<td>DUPLICADO</td>
-											<td>{{ Form::checkbox('pre2', '2', $pre[1], [$d => 'true'] ) }}</td>
+											<td>{{ Form::text('desc-2', isset($pre[2]) ? $pre[2] : '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre2', '2', isset($pre[2]) ? 1 : 0 , [$d => 'true'] ) }}</td>
 											<td>QUINTUPLICADO</td>
-											<td>{{ Form::checkbox('pre5', '5', $pre[4], [$d => 'true'] ) }}</td>
+											<td>{{ Form::text('desc-5', isset($pre[5]) ? $pre[5] : '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre5', '5', isset($pre[5]) ? 1 : 0 , [$d => 'true'] ) }}</td>
 										</tr>
 										<tr>
 											<td>TRIPLICADO</td>
-											<td>{{ Form::checkbox('pre3', '3', $pre[2], [$d => 'true'] ) }}</td>
+											<td>{{ Form::text('desc-3', isset($pre[3]) ? $pre[3] : '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre3', '3', isset($pre[3]) ? 1 : 0 , [$d => 'true'] ) }}</td>
 											<td>SEXTUPLICADO</td>
-											<td>{{ Form::checkbox('pre6', '6', $pre[5], [$d => 'true'] ) }}</td>
+											<td>{{ Form::text('desc-6', isset($pre[6]) ? $pre[6] : '', ['class' => 'form-control', $option => 'true']) }}</td>
+											<td class="center">{{ Form::checkbox('pre6', '6', isset($pre[6]) ? 1 : 0 , [$d => 'true'] ) }}</td>
 										</tr>
 									</table>
 								</div>
@@ -446,7 +454,7 @@
 									<td>{{ Form::text('forma_pago'.$i, $pago->forma_pago, ['class' => 'form-control custom-input', $option => 'true', 'id'=> 'forma-'.$i]) }}</td>
 									<td>{{ Form::text('numero_documento'.$i, $pago->numero_documento, ['class' => 'form-control custom-input solo-numero', $option => 'true']) }}</td>
 									<td>{{ Form::text('banco'.$i, $pago->banco, ['class' => 'form-control custom-input', $option => 'true']) }}</td>
-									<td>{{ Form::date('fecha'.$i, Carbon\Carbon::parse($pago->fecha)->format('d-m-Y'), ['class' => 'datepicker form-control custom-input', $option => 'true']) }}</td>
+									<td>{{ Form::text('fecha'.$i, Carbon\Carbon::parse($pago->fecha)->format('d-m-Y'), ['class' => 'datepicker form-control custom-input', $option => 'true']) }}</td>
 									<td>{{ Form::number('monto'.$i, $pago->monto, ['class' => 'form-control custom-input', $option => 'true', 'id' => 'monto-'.$i]) }}</td>
 									<td style="text-align: center">{{ Form::checkbox('pagado-'.$i, '1', $pago->pivot->pagado, [$d => 'true', 'id' => 'pagado-'.$i]) }}</td>
 								</tr>
@@ -461,7 +469,7 @@
 									<td>{{ Form::text('forma_pago'.$i, '', ['class' => 'form-control custom-input', 'id'=> 'forma-'.$i]) }}</td>
 									<td>{{ Form::text('numero_documento'.$i, '', ['class' => 'form-control custom-input']) }}</td>
 									<td>{{ Form::text('banco'.$i, '', ['class' => 'form-control custom-input']) }}</td>
-									<td>{{ Form::date('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
+									<td>{{ Form::text('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
 									<td>{{ Form::number('monto'.$i, '', ['class' => 'form-control custom-input', 'id' => 'monto-'.$i]) }}</td>
 									<td style="text-align: center">{{ Form::checkbox('pagado-'.$i, '1','', ['id' => 'pagado-'.$i]) }}</td>
 								</tr>
@@ -473,7 +481,7 @@
 									<td>{{ Form::text('forma_pago'.$i, '', ['class' => 'form-control custom-input', 'id'=> 'forma-'.$i]) }}</td>
 									<td>{{ Form::text('numero_documento'.$i, '', ['class' => 'form-control custom-input']) }}</td>
 									<td>{{ Form::text('banco'.$i, '', ['class' => 'form-control custom-input']) }}</td>
-									<td>{{ Form::date('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
+									<td>{{ Form::text('fecha'.$i, '', ['class' => 'form-control custom-input getdate']) }}</td>
 									<td>{{ Form::number('monto'.$i, '', ['class' => 'form-control custom-input', 'id' => 'monto-'.$i]) }}</td>
 									<td style="text-align: center">{{ Form::checkbox('pagado-'.$i, '1','', ['id' => 'pagado-'.$i]) }}</td>
 								</tr>

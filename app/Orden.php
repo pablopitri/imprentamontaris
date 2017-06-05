@@ -55,6 +55,10 @@ class Orden extends Model
     	return $this->belongsToMany('App\Pago')->withPivot('pagado', 'created_at');
     }
 
+    public function copias(){
+        return $this->belongsToMany('App\Copia');
+    }
+
     public function contacto(){
     	return $this->belongsTo('App\Contacto');
     }

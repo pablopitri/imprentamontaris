@@ -28,12 +28,6 @@ const app = new Vue({
 // validará cuando el texto haya cambiado
 // muestra un mensaje de error cuando el rut es inválido
 
-$('#guardar').click(function(ev){
-	ev.preventDefault();
-	$('#cotizacion').submit();
-	window.open('http://localhost/ImprentaMontaris/public/cotizaciones/pdf/5');
-})
-
 $("#search-rut").rut({formatOn: 'keyup'});
 
 $("#rut").rut({formatOn: 'keyup'}).on('rutInvalido', function(e) {

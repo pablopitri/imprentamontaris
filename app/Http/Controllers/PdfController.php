@@ -15,7 +15,7 @@ class PdfController extends Controller
     public function pdfCotizacion($id){
     	$cotizacion = Cotizacion::find($id);
     	$pdf = PDF::loadView('pdf.cotizacion', ['cotizacion' => $cotizacion]);
-		return $pdf->save("//Lenovo-pc/cotizaciones/Cotizacion-Num-".$cotizacion->id.".pdf")->stream("Cotizacion-Num-".$cotizacion->id.".pdf");
+		return $pdf->stream("Cotizacion-Num-".$cotizacion->id.".pdf");
     }
 
     public function pdfOrden($id){

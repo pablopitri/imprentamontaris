@@ -98,7 +98,7 @@ class CotizacionesController extends Controller
                 }
             }
             $pdf = PDF::loadView('pdf.cotizacion', ['cotizacion' => $cotizacion]);
-            $pdf->save("//Lenovo-pc/cotizaciones/Cotizacion-Num-".$cotizacion->id.".pdf");
+            $pdf->save(env('URL_DOWNLOAD')."Cotizacion-Num-".$cotizacion->id.".pdf");
             return redirect('/cotizaciones/'.$cotizacion->id);
         }else{
             return view('cotizaciones.create', ["cotizacion" => $cotizacion]);
@@ -195,7 +195,7 @@ class CotizacionesController extends Controller
                     }
                 }
                 $pdf = PDF::loadView('pdf.cotizacion', ['cotizacion' => $cotizacion]);
-                $pdf->save("//Lenovo-pc/cotizaciones/Cotizacion-Num-".$cotizacion->id.".pdf");
+                $pdf->save(env('URL_DOWNLOAD')."Cotizacion-Num-".$cotizacion->id.".pdf");
                 return redirect('/cotizaciones/'.$cotizacion->id);
             }else{
                 return view('cotizaciones.create', ["contacto" => $contacto]);
